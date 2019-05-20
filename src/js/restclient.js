@@ -1,3 +1,5 @@
+const BASE_URL = "http://localhost:3000/objects/";
+
 export async function makeREStcall(url, options) {
   try {
     let response = await fetch(url, options);
@@ -9,6 +11,13 @@ export async function makeREStcall(url, options) {
     console.log(error);
   }
 }
+export function RESTurlBuilder(id) {
+  if (id === undefined) {
+    id = "";
+  }
+  return BASE_URL + id;
+}
+
 export function RESToptionsBuilder(method, instance) {
   let options;
   if (method.toUpperCase() == "POST") {
