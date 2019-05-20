@@ -5,16 +5,13 @@ export async function postObject(obj) {
     let response = await fetch(OBJECTS_URL, {
       method: "POST",
       headers: {
-        //belangrijk! Anders weet de restserver niet wat voor data binnenkomt.Kan 400 Bad Request teruggeven of de request fout afhandelen
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(obj) //We zetten het JavaScript object om naar een JSON string en plaatsen die in de body van de HTTP Request
+      body: JSON.stringify(obj)
     });
     if (!response.ok) {
-      //als er een antwoord komt wordt de post als gelukt beschouwd (zelfs wanneer het antwoord 404 is bv)
-      //we moeten dan dus checken op de response.ok
       throw Error(
-        "Unable to POST the person: " +
+        "Unable to POST the object: " +
           response.status +
           " " +
           response.statusText
@@ -32,7 +29,7 @@ export async function deleteObject(id) {
       method: "DELETE"
     });
     if (!response.ok) {
-      throw Error("Unable to get person from id " + id);
+      throw Error("Unable to get object from id " + id);
     }
     return response.json();
   } catch (error) {
@@ -44,7 +41,7 @@ export async function getObject(id) {
   try {
     let response = await fetch(OBJECTS_URL + "/" + id);
     if (!response.ok) {
-      throw Error("Unable to get person from id " + id);
+      throw Error("Unable to get object from id " + id);
     }
     return response.json();
   } catch (error) {}
@@ -55,7 +52,7 @@ export async function getObjects() {
     let response = await fetch(OBJECTS_URL);
     if (!response.ok) {
       throw Error(
-        "Unable to GET the persons: " +
+        "Unable to GET the objects: " +
           response.status +
           " " +
           response.statusText
