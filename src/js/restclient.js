@@ -1,6 +1,1 @@
-export function fetchFirstTodo() {
-  return fetch("https://jsonplaceholder.typicode.com/todos/12").then(
-    function(response) {
-    return response.json();
-  });
-}
+export function makeREStcall(callback, error_callback, url, ...options) {}
