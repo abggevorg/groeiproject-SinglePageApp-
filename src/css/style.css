@@ -1,6 +1,10 @@
 body {
   background-color: white;
 }
+.navb {
+  margin: 50px;
+  background-color: cyan;
+}
 
 tr {
   text-align: center;
