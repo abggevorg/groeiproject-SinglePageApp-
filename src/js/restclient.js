@@ -1,43 +1,68 @@
-const BASE_URL = "http://localhost:3000/objects/";
+const OBJECTS_URL = "http://localhost:3000/objects";
 
-export async function makeREStcall(url, options) {
+export async function postObject(obj) {
   try {
-    let response = await fetch(url, options);
+    let response = await fetch(OBJECTS_URL, {
+      method: "POST",
+      headers: {
+        //belangrijk! Anders weet de restserver niet wat voor data binnenkomt.Kan 400 Bad Request teruggeven of de request fout afhandelen
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(obj) //We zetten het JavaScript object om naar een JSON string en plaatsen die in de body van de HTTP Request
+    });
     if (!response.ok) {
-      throw Error("fetch failed");
+      //als er een antwoord komt wordt de post als gelukt beschouwd (zelfs wanneer het antwoord 404 is bv)
+      //we moeten dan dus checken op de response.ok
+      throw Error(
+        "Unable to POST the person: " +
+          response.status +
+          " " +
+          response.statusText
+      );
     }
-    return response;
+    return response.json();
   } catch (error) {
     console.log(error);
   }
 }
-export function RESTurlBuilder(id) {
-  if (id === undefined) {
-    id = "";
+
+export async function deleteObject(id) {
+  try {
+    let response = fetch(OBJECTS_URL + "/" + id, {
+      method: "DELETE"
+    });
+    if (!response.ok) {
+      throw Error("Unable to get person from id " + id);
+    }
+    return response.json();
+  } catch (error) {
+    console.log(error);
   }
-  return BASE_URL + id;
 }
 
-export function RESToptionsBuilder(method, instance) {
-  let options;
-  if (method.toUpperCase() == "POST") {
-    if (instance === undefined) {
-      throw Error("No empty body allowed for POST requests");
+export async function getObject(id) {
+  try {
+    let response = await fetch(OBJECTS_URL + "/" + id);
+    if (!response.ok) {
+      throw Error("Unable to get person from id " + id);
     }
-    options = {
-      method: method,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(instance)
-    };
-  } else {
-    options = {
-      method: method,
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
+    return response.json();
+  } catch (error) {}
+}
+
+export async function getObjects() {
+  try {
+    let response = await fetch(OBJECTS_URL);
+    if (!response.ok) {
+      throw Error(
+        "Unable to GET the persons: " +
+          response.status +
+          " " +
+          response.statusText
+      );
+    }
+    return response.json();
+  } catch (error) {
+    console.log(error);
   }
-  return options;
 }
