@@ -1,5 +1,4 @@
 {
-  "name": "SPA",
   "version": "1.0.0",
   "dependencies": {
     "@extra-string/to-title-case": "^1.1.3",
