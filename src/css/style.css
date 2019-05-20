@@ -1,0 +1,31 @@
+body {
+  background-color: bisque;
+}
+
+tr {
+  text-align: center;
+  position: relative;
+}
+th {
+  text-align: center;
+}
+input {
+  text-align: center;
+  position: relative;
+  background-color: white;
+  display: inline-table;
+}
+h3 {
+  margin: 0%;
+  text-align: left;
+
+  display: inline-table;
+}
+form {
+  text-align: left;
+  margin: 0%;
+  position: relative;
+}
+table {
+  text-align: center;
+}
