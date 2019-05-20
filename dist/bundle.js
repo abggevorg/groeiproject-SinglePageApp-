@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "body {\r\n  background-color: bisque;\r\n}\r\n\r\ntr {\r\n  text-align: center;\r\n  position: relative;\r\n}\r\nth {\r\n  text-align: center;\r\n}\r\ninput {\r\n  text-align: center;\r\n  position: relative;\r\n  background-color: white;\r\n  display: inline-table;\r\n}\r\nh3 {\r\n  margin: 0%;\r\n  text-align: left;\r\n\r\n  display: inline-table;\r\n}\r\nform {\r\n  text-align: left;\r\n  margin: 0%;\r\n  position: relative;\r\n}\r\ntable {\r\n  text-align: center;\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n  background-color: red;\r\n}\r\n\r\ntr {\r\n  text-align: center;\r\n  position: relative;\r\n}\r\nth {\r\n  text-align: center;\r\n}\r\ninput {\r\n  text-align: center;\r\n  position: relative;\r\n  background-color: white;\r\n  display: inline-table;\r\n}\r\nh3 {\r\n  margin: 0%;\r\n  text-align: left;\r\n\r\n  display: inline-table;\r\n}\r\nform {\r\n  text-align: left;\r\n  margin: 0%;\r\n  position: relative;\r\n}\r\ntable {\r\n  text-align: center;\r\n}\r\n", ""]);
 
 
 
