@@ -8,4 +8,6 @@ fatching.then(data => console.log(data));
 */
 import "./css/style.css";
 import "bootstrap/dist/css/bootstrap.css";
-import * as func from "./js/restclient";
+import * as REST from "./js/restclient";
+let options = REST.RESToptionsBuilder("GET");
+console.log(options);

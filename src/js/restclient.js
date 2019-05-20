@@ -12,6 +12,9 @@ export async function makeREStcall(url, options) {
 export function RESToptionsBuilder(method, instance) {
   let options;
   if (method.toUpperCase() == "POST") {
+    if (instance === undefined) {
+      throw Error("No empty body allowed for POST requests");
+    }
     options = {
       method: method,
       headers: {
