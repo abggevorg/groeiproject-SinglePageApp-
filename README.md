@@ -1,2 +1,2 @@
-# groeiproject-SinglePageApp
-Groeiproject UI2
+# SinglePageApp
+Groeiproject UserInterface 2
