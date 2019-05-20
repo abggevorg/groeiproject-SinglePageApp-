@@ -1,3 +1,1 @@
-# groeiproject-SinglePageApp-dqqqqqqqqqqqqqqq
-
-# groeiproject-SinglePageApp-test
+# groeiproject-SinglePageApp-
