@@ -1,9 +1,17 @@
 body {
   background-color: white;
 }
-.navb {
-  margin: 50px;
-  background-color: cyan;
+header {
+  margin: 30px;
+  background-color: purple;
+  opacity: 1;
+}
+header ul li p,
+a {
+  opacity: 0.9;
+  font-size: 20px;
+  color: black;
+  margin: 0%;
 }
 
 tr {
