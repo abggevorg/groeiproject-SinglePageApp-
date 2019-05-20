@@ -14,13 +14,19 @@ a {
   margin: 0%;
 }
 footer {
-  margin: 30px 20px 0px 20px;
+  margin: 30px 15px 0px 15px;
 }
 footer div h5.cu {
   margin: 5px 0 5px 0;
   background-color: Aquamarine;
 }
-footer div div.gegevens {
+footer div.gegevens {
   margin: 0%;
   background-color: Aquamarine;
+}
+
+footer div.cp {
+  margin: 0%;
+  padding: 0%;
+  background-color: white;
 }
