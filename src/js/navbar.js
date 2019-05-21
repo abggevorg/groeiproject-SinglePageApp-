@@ -7,7 +7,8 @@ export function addEventsToNavbar() {
 export function onStartUp() {
   for (let nav of document.getElementsByClassName("nav-link")) {
     if (nav.innerText.toLowerCase() == "home") {
-      selectNavItem(nav);
+      nav.classList.add("active");
+      pageManipulation.setPageContent(nav);
     }
   }
 }
@@ -16,11 +17,7 @@ export function selectNavItem(navItem) {
   for (let nav of document.getElementsByClassName("nav-link")) {
     nav.classList.remove("active");
   }
-  if (navItem.target == "") {
-    navItem.classList.add("active");
-    pageManipulation.setPageContent(navItem);
-  } else {
-    navItem.target.classList.add("active");
-    pageManipulation.setPageContent(navItem.target);
-  }
+
+  navItem.target.classList.add("active");
+  pageManipulation.setPageContent(navItem.target);
 }
