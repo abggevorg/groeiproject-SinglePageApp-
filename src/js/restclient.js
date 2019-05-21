@@ -14,7 +14,7 @@ export async function postObject(obj) {
         "Unable to POST the object: " +
           response.status +
           " " +
-          response.statusText
+          response
       );
     }
     return response.json();

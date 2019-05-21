@@ -13,18 +13,16 @@ a {
   color: black;
   margin: 0%;
 }
-div.cp.footer-copyright {
-  background-color: Aquamarine;
-}
 footer {
   margin: 30px 15px 0px 15px;
-  background-color: Aquamarine;
 }
 footer div h5.cu {
   margin: 5px 0 5px 0;
+  background-color: Aquamarine;
 }
 footer div.gegevens {
   margin: 0%;
+  background-color: Aquamarine;
 }
 
 footer div.cp {
