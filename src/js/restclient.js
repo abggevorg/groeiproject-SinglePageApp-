@@ -11,10 +11,7 @@ export async function postObject(obj) {
     });
     if (!response.ok) {
       throw Error(
-        "Unable to POST the object: " +
-          response.status +
-          " " +
-          response
+        "Unable to POST the object: " + response.status + " " + response
       );
     }
     return response.json();
@@ -62,4 +59,24 @@ export async function getObjects() {
   } catch (error) {
     console.log(error);
   }
+}
+
+export function testGetObjects() {
+  return [
+    { id: 1, name: "first" },
+    { id: 2, name: "second" },
+    { id: 3, name: "third" },
+    { id: 4, name: "fourth" },
+    { id: 5, name: "fift" },
+    { id: 6, name: "sixt" },
+    { id: 7, name: "sevent" },
+    { id: 8, name: "eighth" },
+    { id: 9, name: "ninth" },
+    { id: 10, name: "tenth" },
+    { id: 11, name: "eleventh" },
+    { id: 12, name: "twelfth" },
+    { id: 13, name: "thirteenth" },
+    { id: 14, name: "fourteenth" },
+    { id: 15, name: "fifteenth" }
+  ];
 }
