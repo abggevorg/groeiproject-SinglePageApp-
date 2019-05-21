@@ -13,6 +13,9 @@ a {
   color: black;
   margin: 0%;
 }
+div.cp.footer-copyright {
+  background-color: Aquamarine;
+}
 footer {
   margin: 30px 15px 0px 15px;
   background-color: Aquamarine;
