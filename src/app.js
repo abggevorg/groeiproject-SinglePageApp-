@@ -13,8 +13,7 @@ fatching.then(data => console.log(data));
 */
 var tab;
 function onLoadFunctions() {
-  let home = document.getElementById("#home");
-  navManipulation.selectNavItem(home);
+  navManipulation.onStartUp();
   navManipulation.addEventsToNavbar();
 }
 window.onload = onLoadFunctions;
