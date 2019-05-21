@@ -13,6 +13,12 @@ a {
   color: black;
   margin: 0%;
 }
+header ul li > a:hover {
+  background-color: yellow;
+  opacity: 0.5;
+  color: red;
+}
+
 footer {
   margin: 30px 15px 0px 15px;
 }
