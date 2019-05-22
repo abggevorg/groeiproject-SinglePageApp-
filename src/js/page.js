@@ -51,5 +51,32 @@ function setHomeContent() {
   section.innerHTML = html;
 }
 
-function setNieuwContent() {}
+function setNieuwContent() {
+  let section = document.getElementById("nieuw");
+  let html = `
+<form>
+  <div class="form-group">
+    <label>Object field 1</label>
+    <input type="text" class="form-control" id="field1" placeholder="Enter field 1">
+  </div>
+    <div class="form-group">
+    <label>Object field 1</label>
+    <input type="text" class="form-control" id="field2" placeholder="Enter field 1">
+  </div>
+    <div class="form-group">
+    <label>Object field 1</label>
+    <input type="text" class="form-control" id="field3" placeholder="Enter field 1">
+  </div>
+    <div class="form-group">
+    <label for="exampleFormControlFile1">Add Object image here</label>
+    <input type="file" class="form-control-file" id="file">
+  </div>
+  <div class = "container">
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+`;
+
+  section.innerHTML = html;
+}
 function setZoekContent() {}
