@@ -2,14 +2,21 @@ body {
   background-color: white;
 }
 header {
-  margin: 5px 20px 30px 20px;
-  background-color: Aquamarine;
-  opacity: 1;
+  padding: 1px;
+  background-color: #ffffff;
+}
+.nav-item {
+  margin: 5px;
+}
+ul.navm {
+  margin: 5px 20px 10px 20px;
+  padding: 5px;
+  background-color: rgb(86, 214, 171);
 }
 header ul li p,
 a {
   opacity: 0.9;
-  font-size: 20px;
+  font-size: 16px;
   color: black;
   margin: 0%;
 }
@@ -20,19 +27,35 @@ header ul li > a:hover {
 }
 
 footer {
-  margin: 30px 15px 0px 15px;
+  padding: 10px;
 }
+
+/*css voor een mooie border*/
+.border {
+  border-color: rgb(117, 8, 8);
+  border-width: 5px;
+  border-radius: 50px;
+  border-style: inset;
+}
+
 footer div h5.cu {
+  font-size: 16px;
   margin: 5px 0 5px 0;
-  background-color: Aquamarine;
+  padding: 5px;
+  background-color: rgb(86, 214, 171);
 }
 footer div.gegevens {
   margin: 0%;
-  background-color: Aquamarine;
+  background-color: rgb(86, 214, 171);
 }
 
 footer div.cp {
   margin: 0%;
   padding: 0%;
   background-color: white;
+}
+
+div.card {
+  margin-top: 15px;
+  border-color: aliceblue;
 }

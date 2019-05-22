@@ -26,7 +26,7 @@ export async function deleteObject(id) {
       method: "DELETE"
     });
     if (!response.ok) {
-      throw Error("Unable to get object from id " + id);
+      throw Error("Unable to get object from id: " + id);
     }
     return response.json();
   } catch (error) {
@@ -38,7 +38,7 @@ export async function getObject(id) {
   try {
     let response = await fetch(OBJECTS_URL + "/" + id);
     if (!response.ok) {
-      throw Error("Unable to get object from id " + id);
+      throw Error("Unable to get object from id: " + id);
     }
     return response.json();
   } catch (error) {}

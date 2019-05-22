@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import * as REST from "./restclient.js";
+
 export function setPageContent(selectedNavItem) {
   for (let section of document.getElementsByTagName("section")) {
     if (section.id.toLowerCase() === selectedNavItem.innerText.toLowerCase()) {
@@ -10,6 +11,7 @@ export function setPageContent(selectedNavItem) {
     }
   }
 }
+
 function setContent(section) {
   if (section.id == "home") {
     removeAllContent();
@@ -31,9 +33,9 @@ function removeAllContent() {
 function setHomeContent() {
   let section = document.getElementById("home");
   let html = `<div class="container justify-content"> 
-            <div class ="row">
+            <div class ="">
   `;
-  REST.testGetObjects().forEach(
+  REST.testGetObjects().reduceRight(
     e =>
       (html += ` <div class="col">
                     <div class="card">
