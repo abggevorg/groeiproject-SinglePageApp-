@@ -29,9 +29,7 @@ export async function postObject(obj) {
       body: JSON.stringify(obj)
     });
     if (!response.ok) {
-      throw Error(
-        "Unable to POST the object: " + response.status + " " + response
-      );
+      throw Error("Unable to POST the object: " + response.status);
     }
     return response.json();
   } catch (error) {

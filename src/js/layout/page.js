@@ -31,13 +31,18 @@ function removeAllContent() {
   }
 }
 
-function setHomeContent() {
+async function setHomeContent() {
   let section = document.getElementById("home");
+  let objects;
+  let request = await REST.getObjects().then(function(data) {
+    objects = data;
+  });
+
   let html = `<div class="container justify-content"> 
             <h1>Home</h1>
             <div class ="row">
   `;
-  REST.testGetObjects().forEach(
+  objects.forEach(
     e =>
       (html += ` <div class="col">
                     <div class="card">
@@ -53,7 +58,7 @@ function setHomeContent() {
   section.innerHTML = html;
 }
 
-function setNieuwContent() {
+async function setNieuwContent() {
   let section = document.getElementById("nieuw");
   let html = `
   
@@ -100,10 +105,10 @@ function doPOSTrequest() {
     imageName = document.getElementById("image").files[0].name;
   }
   let obj = new TemplateObject(id, field1, field2, field3, imageName);
-  REST.testPostObject(obj);
+  REST.postObject(obj);
 }
 
-function setZoekContent() {
+async function setZoekContent() {
   let section = document.getElementById("zoek");
   let html = `
   <div class="container justify-content">
@@ -128,8 +133,12 @@ function setZoekContent() {
   </thead>
   <tbody>
   `;
+  let objects;
+  let request = await REST.getObjects().then(function(data) {
+    objects = data;
+  });
 
-  REST.testGetObjects().forEach(
+  objects.forEach(
     e =>
       (html += `<tr>
       <th scope="row">${e.id}</th>
@@ -141,6 +150,5 @@ function setZoekContent() {
   );
   html += ` </tbody>
   </table>`;
-  console.log(html);
   section.innerHTML = html;
 }
