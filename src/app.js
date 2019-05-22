@@ -11,9 +11,7 @@ var fatching = func.fetchFirstTodo();
 fatching.then(data => console.log(data));
 
 */
-var tab;
 function onLoadFunctions() {
- 
   navManipulation.addEventsToNavbar();
 }
 window.onload = onLoadFunctions;

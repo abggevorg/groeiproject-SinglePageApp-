@@ -49,8 +49,6 @@ function setHomeContent() {
     `)
   );
   section.innerHTML = html;
-
-  console.log(section.innerHTML);
 }
 
 function setNieuwContent() {}
