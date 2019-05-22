@@ -43,7 +43,7 @@ function setHomeContent() {
                     <div class="card">
                         <div class="card-body>
                             <h5 class="card-title">${e.id}</h5>
-                            <p class="card-text">${e.name}</p>
+                            <p class="card-text">${e.field1}</p>
                             <p class="card-text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                         </div>    
                     </div> 
