@@ -76,11 +76,11 @@ function setNieuwContent() {
   </div>
 </form>
 `;
+  section.innerHTML = html;
   document.getElementById("submit").addEventListener("click", function(event) {
     event.preventDefault();
     doPOSTrequest();
   });
-  section.innerHTML = html;
 }
 function doPOSTrequest() {
   let id = Math.max(REST.testGetObjects().map(obj => obj.id)) + 1;
