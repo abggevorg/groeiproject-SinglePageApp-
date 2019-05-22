@@ -80,7 +80,7 @@ function setNieuwContent() {
   </div>
 </form>
 `;
-
+<<<<<<< HEAD
   section.innerHTML = html;
 }
 
@@ -120,7 +120,8 @@ function setZoekContent() {
 </table>
 </div>
 `;
-
+=======
+>>>>>>> ac8d1900434dab56de17fba4f38437dc537a36f5
   section.innerHTML = html;
   document.getElementById("submit").addEventListener("click", function(event) {
     event.preventDefault();
@@ -136,3 +137,8 @@ function doPOSTrequest() {
   let obj = new TemplateObject(id, field1, field2, field3, image);
   REST.testPostObject(obj);
 }
+<<<<<<< HEAD
+=======
+
+function setZoekContent() {}
+>>>>>>> ac8d1900434dab56de17fba4f38437dc537a36f5
