@@ -30,21 +30,18 @@ function removeAllContent() {
     section.innerHTML = "";
   }
 }
-
-async function setHomeContent() {
+function setHomeContent() {
   let section = document.getElementById("home");
-  let objects;
-  let request = await REST.getObjects().then(function(data) {
-    objects = data;
-  });
 
-  let html = `<div class="container justify-content"> 
+  REST.getObjects().then(function(data) {
+    let objects = data;
+    let html = `<div class="container justify-content"> 
             <h1>Home</h1>
             <div class ="row">
   `;
-  objects.forEach(
-    e =>
-      (html += ` <div class="col">
+    objects.forEach(
+      e =>
+        (html += ` <div class="col">
                     <div class="card">
                         <div class="card-body>
                             <h5 class="card-title">${e.id}</h5>
@@ -54,11 +51,12 @@ async function setHomeContent() {
                     </div> 
 </div>
     `)
-  );
-  section.innerHTML = html;
+    );
+    section.innerHTML = html;
+  });
 }
 
-async function setNieuwContent() {
+function setNieuwContent() {
   let section = document.getElementById("nieuw");
   let html = `
   
@@ -80,35 +78,79 @@ async function setNieuwContent() {
     <label for="exampleFormControlFile1">Add Object image here</label>
     <input type="file" class="form-control-file" id="image">
   </div>
+  <span id = "error">
+  
+  </span>
   <div class = "container">
   <button id="submit" type="submit" class="btn btn-primary btn-block">Submit</button>
   </div>
+
 </form>
 `;
 
   section.innerHTML = html;
   document.getElementById("submit").addEventListener("click", function(event) {
     event.preventDefault();
-    doPOSTrequest();
+    try {
+      validateForm();
+      doPOSTrequest();
+      setNieuwContent();
+    } catch (error) {
+      showErrorMessage(error);
+    }
   });
 }
-function doPOSTrequest() {
-  let id = parseInt(Math.max(...REST.testGetObjects().map(obj => obj.id))) + 1;
+function showErrorMessage(errorMessage) {
+  document.getElementById("error").innerHTML = `
+  <div class = "form-error">${errorMessage}</div>
+  `;
+}
+
+function validateForm() {
   let field1 = document.getElementById("field1").value;
   let field2 = document.getElementById("field2").value;
   let field3 = document.getElementById("field3").value;
-  let image = document.getElementById("image").files[0];
-  let imageName;
-  if (image === undefined || image == "") {
-    imageName = "";
-  } else {
-    imageName = document.getElementById("image").files[0].name;
+  let throwError = false;
+  let errorMessage =
+    "Form submission failed. The following field(s) are empty:\n";
+  if (field1 === undefined || field1 == "") {
+    errorMessage += "field 1, ";
+    throwError = true;
   }
-  let obj = new TemplateObject(id, field1, field2, field3, imageName);
-  REST.postObject(obj);
+  if (field2 === undefined || field2 == "") {
+    errorMessage += "field 2, ";
+    throwError = true;
+  }
+  if (field3 === undefined || field3 == "") {
+    errorMessage += "field 3, ";
+    throwError = true;
+  }
+  if (throwError) {
+    errorMessage = errorMessage.substring(0, errorMessage.length - 2);
+    throw Error(errorMessage);
+  }
 }
 
-async function setZoekContent() {
+function doPOSTrequest() {
+  REST.getObjects().then(function(data) {
+    let objects = data;
+    let id = parseInt(Math.max(...objects.map(obj => obj.id))) + 1;
+    let field1 = document.getElementById("field1").value;
+    let field2 = document.getElementById("field2").value;
+    let field3 = document.getElementById("field3").value;
+    let image = document.getElementById("image").files[0];
+    let imageName;
+    if (image === undefined || image == "") {
+      imageName = "";
+    } else {
+      imageName = document.getElementById("image").files[0].name;
+    }
+    let obj = new TemplateObject(id, field1, field2, field3, imageName);
+    REST.postObject(obj);
+  });
+}
+
+function setZoekContent() {
   let section = document.getElementById("zoek");
   let html = `
   <div class="container justify-content">
@@ -134,7 +176,7 @@ async function setZoekContent() {
   <tbody>
   `;
   let objects;
-  let request = await REST.getObjects().then(function(data) {
+  REST.getObjects().then(function(data) {
     objects = data;
   });
 
