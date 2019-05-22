@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import * as REST from "../REST/restclient.js";
 import { TemplateObject } from "../Model/TemplateObject.js";
+var moment = require("moment");
 
 export function setPageContent(selectedNavItem) {
   for (let section of document.getElementsByTagName("section")) {
@@ -46,6 +47,7 @@ function setHomeContent() {
                         <div class="card-body>
                             <h5 class="card-title">${e.id}</h5>
                             <p class="card-text">${e.field1}</p>
+                            <p class="card-text">${e.image}</p>
                             <p class="card-text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                         </div>    
                     </div> 
@@ -64,15 +66,15 @@ function setNieuwContent() {
 <h1>Nieuwe object</h1>
   <div class="form-group">
     <label>Object field 1</label>
-    <input type="text" class="form-control" id="field1" placeholder="Enter field 1">
+    <input type="text" class="form-control" id="field1" placeholder="Enter field 1" valid>
   </div>
     <div class="form-group">
-    <label>Object field 1</label>
-    <input type="text" class="form-control" id="field2" placeholder="Enter field 1">
+    <label>Object field 2</label>
+    <input type="text" class="form-control" id="field2" placeholder="Enter field 2" valid>
   </div>
     <div class="form-group">
-    <label>Object field 1</label>
-    <input type="text" class="form-control" id="field3" placeholder="Enter field 1">
+    <label>Object field 3</label>
+    <input type="text" class="form-control" id="field3" placeholder="Enter field 3" valid>
   </div>
     <div class="form-group">
     <label for="exampleFormControlFile1">Add Object image here</label>
@@ -92,8 +94,8 @@ function setNieuwContent() {
   document.getElementById("submit").addEventListener("click", function(event) {
     event.preventDefault();
     try {
-      validateForm();
-      doPOSTrequest();
+      let fields = validateForm();
+      doPOSTrequest(fields);
       setNieuwContent();
     } catch (error) {
       showErrorMessage(error);
@@ -109,10 +111,21 @@ function showErrorMessage(errorMessage) {
 function validateForm() {
   let field1 = document.getElementById("field1").value;
   let field2 = document.getElementById("field2").value;
-  let field3 = document.getElementById("field3").value;
+  let date_field3 = moment(
+    document.getElementById("field3").value,
+    "DD/MM/YYYY",
+    true
+  );
+  let image = document.getElementById("image").files[0];
+  if (image === undefined || image == "") {
+    image = "";
+  } else {
+    image = image.name;
+  }
+
   let throwError = false;
   let errorMessage =
-    "Form submission failed. The following field(s) are empty:\n";
+    "Form submission failed. The following field(s) are empty or invalid:\n";
   if (field1 === undefined || field1 == "") {
     errorMessage += "field 1, ";
     throwError = true;
@@ -121,31 +134,32 @@ function validateForm() {
     errorMessage += "field 2, ";
     throwError = true;
   }
-  if (field3 === undefined || field3 == "") {
+  if (
+    date_field3 === undefined ||
+    date_field3 == "" ||
+    !date_field3.isValid()
+  ) {
     errorMessage += "field 3, ";
+    document.getElementById("field3").setCustomValidity("Invalid field");
     throwError = true;
   }
   if (throwError) {
     errorMessage = errorMessage.substring(0, errorMessage.length - 2);
     throw Error(errorMessage);
   }
+  return [field1, field2, date_field3, image];
 }
 
-function doPOSTrequest() {
+function doPOSTrequest(fields) {
   REST.getObjects().then(function(data) {
     let objects = data;
     let id = parseInt(Math.max(...objects.map(obj => obj.id))) + 1;
-    let field1 = document.getElementById("field1").value;
-    let field2 = document.getElementById("field2").value;
-    let field3 = document.getElementById("field3").value;
-    let image = document.getElementById("image").files[0];
-    let imageName;
-    if (image === undefined || image == "") {
-      imageName = "";
-    } else {
-      imageName = document.getElementById("image").files[0].name;
-    }
-    let obj = new TemplateObject(id, field1, field2, field3, imageName);
+    let field1 = fields[0];
+    let field2 = fields[1];
+    let field3 = fields[2];
+    let image = fields[3];
+
+    let obj = new TemplateObject(id, field1, field2, field3, image);
     REST.postObject(obj);
   });
 }
@@ -178,19 +192,18 @@ function setZoekContent() {
   let objects;
   REST.getObjects().then(function(data) {
     objects = data;
-  });
-
-  objects.forEach(
-    e =>
-      (html += `<tr>
+    objects.forEach(
+      e =>
+        (html += `<tr>
       <th scope="row">${e.id}</th>
       <td>${e.field1}</td>
       <td>${e.field2}</td>
       <td>${e.field3}</td>
     </tr>
     `)
-  );
-  html += ` </tbody>
+    );
+    html += ` </tbody>
   </table>`;
-  section.innerHTML = html;
+    section.innerHTML = html;
+  });
 }
