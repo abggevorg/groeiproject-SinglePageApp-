@@ -112,9 +112,9 @@ function setZoekContent() {
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Field 1</th>
+      <th scope="col">Field 2</th>
+      <th scope="col">Field 3</th>
     </tr>
   </thead>
   <tbody>
@@ -125,8 +125,8 @@ function setZoekContent() {
       (html += `<tr>
       <th scope="row">${e.id}</th>
       <td>${e.field1}</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>${e.field2}</td>
+      <td>${e.field3}</td>
     </tr>
     `)
   );
