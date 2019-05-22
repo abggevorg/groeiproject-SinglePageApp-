@@ -82,6 +82,19 @@ function setNieuwContent() {
 `;
 
   section.innerHTML = html;
+  document.getElementById("submit").addEventListener("click", function(event) {
+    event.preventDefault();
+    doPOSTrequest();
+  });
+}
+function doPOSTrequest() {
+  let id = Math.max(REST.testGetObjects().map(obj => obj.id)) + 1;
+  let field1 = document.getElementById("field1");
+  let field2 = document.getElementById("field2");
+  let field3 = document.getElementById("field3");
+  let image = document.getElementById("image");
+  let obj = new TemplateObject(id, field1, field2, field3, image);
+  REST.testPostObject(obj);
 }
 
 function setZoekContent() {
@@ -120,19 +133,5 @@ function setZoekContent() {
 </table>
 </div>
 `;
-
   section.innerHTML = html;
-  document.getElementById("submit").addEventListener("click", function(event) {
-    event.preventDefault();
-    doPOSTrequest();
-  });
-}
-function doPOSTrequest() {
-  let id = Math.max(REST.testGetObjects().map(obj => obj.id)) + 1;
-  let field1 = document.getElementById("field1");
-  let field2 = document.getElementById("field2");
-  let field3 = document.getElementById("field3");
-  let image = document.getElementById("image");
-  let obj = new TemplateObject(id, field1, field2, field3, image);
-  REST.testPostObject(obj);
 }
