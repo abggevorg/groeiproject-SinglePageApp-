@@ -111,27 +111,20 @@ function setZoekContent() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
+  `;
+
+  REST.testGetObjects().forEach(
+    e =>
+      (html += `<tr>
+      <th scope="row">${e.id}</th>
+      <td>${e.name}</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-`;
+    `)
+  );
+  html += ` </tbody>
+  </table>`;
+  console.log(html);
   section.innerHTML = html;
 }
