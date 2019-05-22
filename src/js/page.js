@@ -69,14 +69,26 @@ function setNieuwContent() {
   </div>
     <div class="form-group">
     <label for="exampleFormControlFile1">Add Object image here</label>
-    <input type="file" class="form-control-file" id="file">
+    <input type="file" class="form-control-file" id="image">
   </div>
   <div class = "container">
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button id="submit" type="submit" class="btn btn-primary btn-block">Submit</button>
   </div>
 </form>
 `;
-
+  document.getElementById("submit").addEventListener("click", function(event) {
+    event.preventDefault();
+    doPOSTrequest();
+  });
   section.innerHTML = html;
 }
+function doPOSTrequest() {
+  let id = Math.max(REST.testGetObjects().map(obj => obj.id)) + 1;
+  let field1 = document.getElementById("field1");
+  let field2 = document.getElementById("field2");
+  let field3 = document.getElementById("field3");
+  let image = document.getElementById("image");
+  let obj = new TemplateObject();
+}
+
 function setZoekContent() {}
