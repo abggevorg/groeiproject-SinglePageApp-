@@ -88,12 +88,18 @@ function setNieuwContent() {
   });
 }
 function doPOSTrequest() {
-  let id = Math.max(REST.testGetObjects().map(obj => obj.id)) + 1;
-  let field1 = document.getElementById("field1");
-  let field2 = document.getElementById("field2");
-  let field3 = document.getElementById("field3");
-  let image = document.getElementById("image");
-  let obj = new TemplateObject(id, field1, field2, field3, image);
+  let id = parseInt(Math.max(...REST.testGetObjects().map(obj => obj.id))) + 1;
+  let field1 = document.getElementById("field1").value;
+  let field2 = document.getElementById("field2").value;
+  let field3 = document.getElementById("field3").value;
+  let image = document.getElementById("image").files[0];
+  let imageName;
+  if (image === undefined || image == "") {
+    imageName = "";
+  } else {
+    imageName = document.getElementById("image").files[0].name;
+  }
+  let obj = new TemplateObject(id, field1, field2, field3, imageName);
   REST.testPostObject(obj);
 }
 
