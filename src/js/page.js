@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import * as REST from "./restclient.js";
+import { TemplateObject } from "./TemplateObject.js";
 
 export function setPageContent(selectedNavItem) {
   for (let section of document.getElementsByTagName("section")) {
@@ -88,7 +89,8 @@ function doPOSTrequest() {
   let field2 = document.getElementById("field2");
   let field3 = document.getElementById("field3");
   let image = document.getElementById("image");
-  let obj = new TemplateObject();
+  let obj = new TemplateObject(id, field1, field2, field3, image);
+  REST.testPostObject(obj);
 }
 
 function setZoekContent() {}

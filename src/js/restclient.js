@@ -1,4 +1,23 @@
+import { TemplateObject } from "./TemplateObject.js";
+
 const OBJECTS_URL = "http://localhost:3000/objects";
+let objects = [
+  new TemplateObject(1, "a", "b", "c", "image"),
+  new TemplateObject(2, "a", "b", "c", "image"),
+  new TemplateObject(3, "a", "b", "c", "image"),
+  new TemplateObject(4, "a", "b", "c", "image"),
+  new TemplateObject(5, "a", "b", "c", "image"),
+  new TemplateObject(6, "a", "b", "c", "image"),
+  new TemplateObject(7, "a", "b", "c", "image"),
+  new TemplateObject(8, "a", "b", "c", "image"),
+  new TemplateObject(9, "a", "b", "c", "image"),
+  new TemplateObject(10, "a", "b", "c", "image"),
+  new TemplateObject(11, "a", "b", "c", "image"),
+  new TemplateObject(12, "a", "b", "c", "image"),
+  new TemplateObject(13, "a", "b", "c", "image"),
+  new TemplateObject(14, "a", "b", "c", "image"),
+  new TemplateObject(15, "a", "b", "c", "image")
+];
 
 export async function postObject(obj) {
   try {
@@ -62,21 +81,8 @@ export async function getObjects() {
 }
 
 export function testGetObjects() {
-  return [
-    { id: 1, name: "first" },
-    { id: 2, name: "second" },
-    { id: 3, name: "third" },
-    { id: 4, name: "fourth" },
-    { id: 5, name: "fift" },
-    { id: 6, name: "sixt" },
-    { id: 7, name: "sevent" },
-    { id: 8, name: "eighth" },
-    { id: 9, name: "ninth" },
-    { id: 10, name: "tenth" },
-    { id: 11, name: "eleventh" },
-    { id: 12, name: "twelfth" },
-    { id: 13, name: "thirteenth" },
-    { id: 14, name: "fourteenth" },
-    { id: 15, name: "fifteenth" }
-  ];
+  return objects;
+}
+export function testPostObject(obj) {
+  objects.push(obj);
 }
