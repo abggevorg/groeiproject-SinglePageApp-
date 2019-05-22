@@ -79,7 +79,7 @@ function setNieuwContent() {
   </div>
 </form>
 `;
-<<<<<<< HEAD
+
   section.innerHTML = html;
 }
 
@@ -119,8 +119,7 @@ function setZoekContent() {
 </table>
 </div>
 `;
-=======
->>>>>>> ac8d1900434dab56de17fba4f38437dc537a36f5
+
   section.innerHTML = html;
   document.getElementById("submit").addEventListener("click", function(event) {
     event.preventDefault();
@@ -135,8 +134,3 @@ function doPOSTrequest() {
   let image = document.getElementById("image");
   let obj = new TemplateObject();
 }
-<<<<<<< HEAD
-=======
-
-function setZoekContent() {}
->>>>>>> ac8d1900434dab56de17fba4f38437dc537a36f5
