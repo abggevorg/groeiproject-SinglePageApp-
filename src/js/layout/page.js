@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
-import * as REST from "./restclient.js";
-import { TemplateObject } from "./TemplateObject.js";
+import * as REST from "../REST/restclient.js";
+import { TemplateObject } from "../Model/TemplateObject.js";
 
 export function setPageContent(selectedNavItem) {
   for (let section of document.getElementsByTagName("section")) {

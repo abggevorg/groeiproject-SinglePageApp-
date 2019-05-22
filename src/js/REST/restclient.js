@@ -1,4 +1,4 @@
-import { TemplateObject } from "./TemplateObject.js";
+import { TemplateObject } from "../Model/TemplateObject.js";
 
 const OBJECTS_URL = "http://localhost:3000/objects";
 let objects = [
