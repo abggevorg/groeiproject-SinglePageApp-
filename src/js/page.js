@@ -33,9 +33,9 @@ function removeAllContent() {
 function setHomeContent() {
   let section = document.getElementById("home");
   let html = `<div class="container justify-content"> 
-            <div class ="">
+            <div class ="row">
   `;
-  REST.testGetObjects().reduceRight(
+  REST.testGetObjects().forEach(
     e =>
       (html += ` <div class="col">
                     <div class="card">
