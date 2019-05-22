@@ -101,6 +101,7 @@ function setZoekContent() {
   let section = document.getElementById("zoek");
   let html = `
   <div class="container justify-content">
+  <h1>Zoeken</h1>
   <table class="table">
   <thead>
     <tr>
@@ -117,7 +118,7 @@ function setZoekContent() {
     e =>
       (html += `<tr>
       <th scope="row">${e.id}</th>
-      <td>${e.name}</td>
+      <td>${e.field1}</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
