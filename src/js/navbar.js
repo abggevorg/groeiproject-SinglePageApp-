@@ -8,7 +8,7 @@ export function addEventsToNavbar() {
     nav.addEventListener("click", selectNavItem);
   }
 }
-export function selectNavItem(navItem) {
+function selectNavItem(navItem) {
   for (let nav of document.getElementsByClassName("nav-link")) {
     nav.classList.remove("active");
   }
