@@ -64,7 +64,9 @@ footer div.cp {
 
 div.card {
   margin-top: 15px;
+
   border-color: aliceblue;
+  min-width: 399px;
 }
 section {
   min-height: 61.5%;

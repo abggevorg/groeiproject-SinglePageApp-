@@ -46,7 +46,7 @@ function setHomeContent() {
                             <h5 class="card-title">${e.id}</h5>
                             <p class="card-text">${e.field1}</p>
                             <p class="card-text">${e.image}</p>
-                            <p class="card-text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                            <p class="card-text"></p>
                         </div>    
                     </div> 
 </div>
