@@ -72,7 +72,7 @@ function setNieuwContent() {
   </div>
     <div class="form-group">
     <label>Object field 3</label>
-    <input type="text" class="form-control" id="field3" placeholder="Enter field 3" valid>
+    <input type="text" class="form-control" id="field3" placeholder="Enter field 3 in DD/MM/YYYY format" valid>
   </div>
     <div class="form-group">
     <label for="exampleFormControlFile1">Add Object image here</label>
@@ -145,7 +145,7 @@ function validateForm() {
     errorMessage = errorMessage.substring(0, errorMessage.length - 2);
     throw Error(errorMessage);
   }
-  return [field1, field2, date_field3, image];
+  return [field1, field2, date_field3.format("DD/MM/YYYY"), image];
 }
 
 function doPOSTrequest(fields) {
@@ -187,9 +187,12 @@ function filterTable() {
   let filter = document.getElementById("filter").value;
   REST.getObjects().then(function(data) {
     let results = [];
-    results.push(...data.filter(e => e.id == filter));
     results.push(
-      ...data.filter(e => e.field1.toLowerCase().includes(filter.toLowerCase()))
+      ...data.filter(
+        e =>
+          e.id == filter ||
+          e.field1.toLowerCase().includes(filter.toLowerCase())
+      )
     );
     buildTable(results);
   });
