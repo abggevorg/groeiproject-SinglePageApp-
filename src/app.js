@@ -1,6 +1,5 @@
 import "./css/style.css";
 import "bootstrap/dist/css/bootstrap.css";
-import * as REST from "./js/REST/restclient";
 import * as navManipulation from "./js/layout/navbar";
 
 /*import "./css/style.css";

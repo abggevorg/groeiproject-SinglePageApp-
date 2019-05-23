@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
-import * as REST from "../REST/restclient.js";
+import * as REST from "../REST/restclient";
 import { TemplateObject } from "../Model/TemplateObject.js";
 var moment = require("moment");
 
@@ -33,14 +33,12 @@ function removeAllContent() {
 }
 function setHomeContent() {
   let section = document.getElementById("home");
-
-  REST.getObjects().then(function(data) {
-    let objects = data;
-    let html = `<div class="container justify-content"> 
+  let html = `<div class="container justify-content"> 
             <h1>Home</h1>
             <div class ="row">
   `;
-    objects.forEach(
+  REST.getObjects().then(function(data) {
+    data.forEach(
       e =>
         (html += ` <div class="col">
                     <div class="card">
@@ -172,13 +170,34 @@ function setZoekContent() {
 
   
 <div class="input-group mb-3">
-<input type="text" class="form-control" placeholder="Zoeken..." aria-label="Zoeken..." aria-describedby="basic-addon2">
-<div class="input-group-append">
-  <button class="btn btn-outline-secondary" type="button">Zoeken</button>
-</div>
+<input type="text" id="filter" class="form-control" placeholder="Zoeken..." aria-label="Zoeken..." aria-describedby="basic-addon2">
 </div>
 
-  <table class="table">
+  <table id = "dataTable" class="table">
+
+  </table>
+  `;
+  section.innerHTML = html;
+  document.getElementById("filter").addEventListener("input", filterTable);
+  REST.getObjects().then(function(data) {
+    buildTable(data);
+  });
+}
+function filterTable() {
+  let filter = document.getElementById("filter").value;
+  REST.getObjects().then(function(data) {
+    let results = [];
+    results.push(...data.filter(e => e.id == filter));
+    results.push(
+      ...data.filter(e => e.field1.toLowerCase().includes(filter.toLowerCase()))
+    );
+    buildTable(results);
+  });
+}
+
+function buildTable(data) {
+  let table = document.getElementById("dataTable");
+  let html = `
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -187,23 +206,17 @@ function setZoekContent() {
       <th scope="col">Field 3</th>
     </tr>
   </thead>
-  <tbody>
-  `;
-  let objects;
-  REST.getObjects().then(function(data) {
-    objects = data;
-    objects.forEach(
-      e =>
-        (html += `<tr>
+  <tbody>`;
+  data.forEach(
+    e =>
+      (html += `<tr>
       <th scope="row">${e.id}</th>
       <td>${e.field1}</td>
       <td>${e.field2}</td>
       <td>${e.field3}</td>
     </tr>
     `)
-    );
-    html += ` </tbody>
-  </table>`;
-    section.innerHTML = html;
-  });
+  );
+  html += ` </tbody>`;
+  table.innerHTML = html;
 }
