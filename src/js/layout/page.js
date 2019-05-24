@@ -188,12 +188,14 @@ function setZoekContent() {
 function filterTable() {
   let filter = document.getElementById("filter").value;
   REST.getObjects().then(function(data) {
+    data = data.map(e => TemplateObject.create(e));
     let results = [];
     results.push(
       ...data.filter(
         e =>
           e.id == filter ||
-          e.field1.toLowerCase().includes(filter.toLowerCase())
+          e.field1.toLowerCase().includes(filter.toLowerCase()) ||
+          e.field3.includes(filter)
       )
     );
     buildTable(results);
@@ -212,6 +214,7 @@ function buildTable(data) {
     </tr>
   </thead>
   <tbody>`;
+  data = data.map(e => TemplateObject.create(e));
   data.forEach(
     e =>
       (html += `<tr>
