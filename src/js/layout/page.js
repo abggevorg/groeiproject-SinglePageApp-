@@ -38,10 +38,12 @@ function setHomeContent() {
             <div class ="row">
   `;
   REST.getObjects().then(function(data) {
+    data = data.map(e => TemplateObject.create(e));
     data.forEach(
       e =>
         (html += ` <div class="col">
                     <div class="card">
+                     <img class="card-img-top" src="${e.getImageURL()}">
                         <div class="card-body>
                             <h5 class="card-title">${e.id}</h5>
                             <p class="card-text">${e.field1}</p>
@@ -157,7 +159,7 @@ function doPOSTrequest(fields) {
     let field3 = fields[2];
     let image = fields[3];
 
-    let obj = new TemplateObject(id, field1, field2, field3, image);
+    let obj = TemplateObject.create(id, field1, field2, field3, image);
     REST.postObject(obj);
   });
 }
