@@ -33,16 +33,10 @@ header ul li > a:hover {
 }
 
 footer {
+  position: static;
   padding: 10px;
   bottom: 0;
-}
-
-/*css voor een mooie border*/
-.border {
-  border-color: rgb(117, 8, 8);
-  border-width: 5px;
-  border-radius: 50px;
-  border-style: inset;
+  top: 0;
 }
 
 footer div h5.cu {
