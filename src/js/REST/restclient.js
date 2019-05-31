@@ -1,4 +1,5 @@
-const OBJECTS_URL = "http://localhost:3000/objects";
+const BASE_URL = "http://localhost:3000/";
+const OBJECTS_URL = BASE_URL + "objects";
 
 export async function postObject(obj) {
   try {
@@ -57,4 +58,11 @@ export async function getObjects() {
   } catch (error) {
     console.log(error);
   }
+}
+
+export function getImageURL(obj) {
+  if (obj.image === undefined || obj.image == "") {
+    return BASE_URL + "anonymous.jpg";
+  }
+  return BASE_URL + obj.image;
 }
