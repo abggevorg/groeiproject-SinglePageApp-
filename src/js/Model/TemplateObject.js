@@ -6,7 +6,6 @@ export class kunstenaar {
     this.first_name = first_name;
     this.last_name = last_name;
     this.birth_date = moment(birth_date, "DD/MM/YYYY").format("DD/MM/YYYY");
-
     this.image = image;
     this.country = country;
   }
