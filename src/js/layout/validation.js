@@ -19,17 +19,17 @@ export function validForm() {
   var errorMessage = "";
   //field1 test
   if (field1 === undefined || field1 == "") {
-    errorMessage += "fild 1 is incorrect please fill fild 1 in <br>";
+    errorMessage += "field 1 is incorrect please fill field 1 in <br>";
   }
   if (field2 === undefined || field2 == "") {
-    errorMessage += "fild 2 is incorrect please fill fild 2 in <br>";
+    errorMessage += "field 2 is incorrect please fill field 2 in <br>";
   }
   if (
     date_field3 === undefined ||
     date_field3 == "" ||
     !date_field3.isValid()
   ) {
-    errorMessage += "fild 3 in incorrect (it should be like 12/12/1012)";
+    errorMessage += "field 3 in incorrect (it should be like 12/12/1012)";
   }
 
   if (errorMessage == "") {
