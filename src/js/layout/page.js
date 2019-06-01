@@ -56,8 +56,8 @@ function setHomeContent() {
                             <p class="card-text"> Name: ${e.first_name}</p>
                             <p class="card-text"> Firstname: ${e.last_name}</p>
                             <p class="card-text">Birthday: ${e.birth_date}</p>
-                            <p class="card-text"> Firstname: ${e.isAlive}</p>
-                            <p class="card-text"> Firstname: ${e.image}</p>
+                            <p class="card-text"> is alave?: ${e.isAlive}</p>
+                            <p class="card-text"> image name: ${e.image}</p>
                             <!-- <p class="card-text">${e.image_name}</p>-->
                             <p class="card-text"></p>
                         </div>    
