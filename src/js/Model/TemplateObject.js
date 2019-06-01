@@ -1,22 +1,21 @@
 var moment = require("moment");
 
-export class TemplateObject {
-  constructor(id, field1, field2, field3, image_name, image) {
+export class kunstenaar {
+  constructor(id, first_name, last_name, birth_date, isAlive, image) {
     this.id = id;
-    this.field1 = field1;
-    this.field2 = field2;
-    this.field3 = moment(field3, "DD/MM/YYYY").format("DD/MM/YYYY");
-    this.image_name = image_name;
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.birth_date = moment(birth_date, "DD/MM/YYYY").format("DD/MM/YYYY");
+    this.isAlive = isAlive;
     this.image = image;
   }
 
   static create(objJSON) {
     return new this(
       objJSON.id,
-      objJSON.field1,
-      objJSON.field2,
-      objJSON.field3,
-      objJSON.image_name,
+      objJSON.first_name,
+      objJSON.last_name,
+      objJSON.birth_date,
       objJSON.image
     );
   }

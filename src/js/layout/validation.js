@@ -33,7 +33,7 @@ export function validForm() {
   }
 
   if (errorMessage == "") {
-    return [field1, field2, date_field3.format("DD/MM/YYYY"), imageName, image];
+    return [id, first_name, last_name, birth_date, isAlive, image];
   } else {
     throw Error(errorMessage);
   }
