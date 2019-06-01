@@ -55,7 +55,7 @@ export async function getObjects() {
           response.statusText
       );
     }
-    console.log(response.json);
+    console.log(response.json.getObject);
     return response.json();
   } catch (error) {
     console.log(error);
