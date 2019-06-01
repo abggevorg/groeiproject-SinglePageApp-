@@ -57,13 +57,12 @@ footer div.cp {
 }
 
 div.card {
-  margin-top: 15px;
-
   border-color: aliceblue;
-  min-width: 399px;
+  max-width: 296px;
+  min-width: 296px;
 }
 section {
-  min-height: 10%;
+  min-height: 61.5%;
 }
 
 img.card-img-top {

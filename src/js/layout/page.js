@@ -47,14 +47,14 @@ function setHomeContent() {
     data.forEach(
       e =>
         (html += ` <div class="col">
-                    <div class="card border border-info">
+                    <div class="card border border-info mx-2 my-3">
                         <img class="card-img-top ml-3 mt-3" src="${e.image}">
                         <div class="card-body mx-2 my-2">
                             <h5 class="card-title">User ID:${e.id}</h5>
                             <p class="card-text"> Name: ${e.field1}</p>
                             <p class="card-text"> Firstname: ${e.field2}</p>
                             <p class="card-text">Birthday: ${e.field3}</p>
-                            <p class="card-text">${e.image_name}</p>
+                            <!-- <p class="card-text">${e.image_name}</p>-->
                             <p class="card-text"></p>
                         </div>    
                     </div> 
