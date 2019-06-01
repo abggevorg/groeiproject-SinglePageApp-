@@ -1,9 +1,8 @@
 import "./css/style.css";
 import "bootstrap/dist/css/bootstrap.css";
-import * as navManipulation from "./js/layout/navbar";
-
+import * as addEvents from "./js/layout/eventListeners.js";
 
 function onLoadFunctions() {
-  navManipulation.addEventsToNavbar();
+  addEvents.toNavbar();
 }
 window.onload = onLoadFunctions;

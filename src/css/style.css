@@ -65,3 +65,8 @@ div.card {
 section {
   min-height: 61.5%;
 }
+
+img.card-img-top {
+  height: 124px;
+  width: 137px;
+}
