@@ -32,7 +32,6 @@ export function validForm() {
     errorMessage += "fild 3 in incorrect (it should be like 12/12/1012)";
   }
 
-  console.log(errorMessage + " +++ god of slecht");
   if (errorMessage == "") {
     return [field1, field2, date_field3.format("DD/MM/YYYY"), imageName, image];
   } else {

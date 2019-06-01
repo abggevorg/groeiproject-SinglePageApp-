@@ -24,7 +24,6 @@ export function toSubmitButton() {
     event.preventDefault();
     try {
       let fields = gs.validForm();
-      console.log("ik ben er");
       //doepost requist moet in een andere class zijn
       pageManipulation.doPOSTrequest(fields);
       pageManipulation.setNieuwContent();
