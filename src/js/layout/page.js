@@ -56,8 +56,8 @@ function setHomeContent() {
                             <p class="card-text"> Name: ${e.first_name}</p>
                             <p class="card-text"> Firstname: ${e.last_name}</p>
                             <p class="card-text">Birthday: ${e.birth_date}</p>
-                            <p class="card-text"> Firstname: ${e.isAlive}</p>
-                            <p class="card-text"> Firstname: ${e.image}</p>
+                            <p class="card-text"> is alave?: ${e.isAlive}</p>
+                            <p class="card-text"> image name: ${e.image}</p>
                             <!-- <p class="card-text">${e.image_name}</p>-->
                             <p class="card-text"></p>
                         </div>    
@@ -105,13 +105,14 @@ export function setNieuwContent() {
 
 export function doPOSTrequest(fields) {
   REST.getObjects().then(function(data) {
+    console.log(data);
     let objects = data;
     let id = parseInt(Math.max(...objects.map(obj => obj.id))) + 1;
     let first_name = fields[0];
     let last_name = fields[1];
     let birth_date = fields[2];
-    let isAlive = fields[3];
-    let image = fields[4];
+    let image = fields[3];
+    let country = fields[4];
     let obj;
     if (image === undefined || image == "") {
       image = DEFAULT_IMAGE;
@@ -120,8 +121,8 @@ export function doPOSTrequest(fields) {
         first_name,
         last_name,
         birth_date,
-        isAlive,
-        image
+        image,
+        country
       );
       REST.postObject(obj);
     } else {
@@ -134,8 +135,8 @@ export function doPOSTrequest(fields) {
           first_name,
           last_name,
           birth_date,
-          isAlive,
-          image
+          image,
+          country
         );
         REST.postObject(obj);
       };

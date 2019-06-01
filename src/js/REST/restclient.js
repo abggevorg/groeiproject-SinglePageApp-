@@ -44,6 +44,7 @@ export async function getObject(id) {
 }
 
 export async function getObjects() {
+  console.log("bener");
   try {
     let response = await fetch(OBJECTS_URL);
     if (!response.ok) {
@@ -54,7 +55,7 @@ export async function getObjects() {
           response.statusText
       );
     }
-    console.log(response.json);
+    console.log(response.json.getObject);
     return response.json();
   } catch (error) {
     console.log(error);
