@@ -16,6 +16,7 @@ export class kunstenaar {
       objJSON.first_name,
       objJSON.last_name,
       objJSON.birth_date,
+      objJSON.isAlive,
       objJSON.image
     );
   }
