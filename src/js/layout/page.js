@@ -61,7 +61,6 @@ function setHomeContent() {
                               e.birthday_date
                             }</p>
                             <p class="card-text">Nationality: ${e.country}</p>
-                            <!-- <p class="card-text">${e.image_name}</p>-->
                             <p class="card-text"></p>
                         </div>    
                     </div> 
@@ -93,7 +92,7 @@ export function setNieuwContent() {
   </div>
   <div class="form-group">
   <label>Country</label>
-  <input type="text" class="form-control date" id="country" placeholder="Enter field 3 in DD/MM/YYYY format" valid>
+  <input type="text" class="form-control date" id="country" placeholder="This fild can be empty" valid>
 </div>
     <div class="form-group">
     <label for="exampleFormControlFile1">Add Object image here</label>
@@ -111,19 +110,36 @@ export function setNieuwContent() {
   section.innerHTML = html;
 }
 
+/* als validatie goed is zal doPOSTrequest uitgeroepen worden met
+een array vanfilds */
 export async function doPOSTrequest(fields) {
+  //alle objects nemen om te zien welke de laatse id is endan +1 doen
+  let id;
   REST.getObjects().then(function(data) {
-    console.log(fields);
     let objects = data;
-    let id = parseInt(Math.max(...objects.map(obj => obj.id))) + 1;
-    let first_name = fields[0];
-    let last_name = fields[1];
-    let birth_date = fields[2];
-    let image = fields[3];
-    let country = fields[4];
-    let obj;
-    if (image === undefined || image == "") {
-      image = DEFAULT_IMAGE;
+    id = parseInt(Math.max(...objects.map(obj => obj.id))) + 1;
+  });
+  console.log(fields);
+
+  //filds die we hebben gekregen van validation
+  let first_name = fields[0];
+  let last_name = fields[1];
+  let birth_date = fields[2];
+  let image = fields[3];
+  let country = fields[4];
+  let obj;
+
+  //als image leg is (wat altijd zal zijn) image mag leg blijven
+  // if (image === undefined || image == "") {
+  image = "";
+  obj = new kunstenaar(id, first_name, last_name, birth_date, image, country);
+  REST.postObject(obj);
+
+  /* } else {
+    var fileReader = new FileReader();
+    fileReader.readAsDataURL(image);
+    fileReader.onloadend = () => {
+      image = fileReader.result;
       obj = new kunstenaar(
         id,
         first_name,
@@ -133,23 +149,7 @@ export async function doPOSTrequest(fields) {
         country
       );
       REST.postObject(obj);
-    } else {
-      var fileReader = new FileReader();
-      fileReader.readAsDataURL(image);
-      fileReader.onloadend = () => {
-        image = fileReader.result;
-        obj = new kunstenaar(
-          id,
-          first_name,
-          last_name,
-          birth_date,
-          image,
-          country
-        );
-        REST.postObject(obj);
-      };
-    }
-  });
+    };*/
 }
 
 function setZoekContent() {
@@ -157,14 +157,10 @@ function setZoekContent() {
   let html = `
   <div class="container justify-content">
   <h1>Zoeken</h1>
-
-  
 <div class="input-group mb-3">
 <input type="text" id="filter" class="form-control" placeholder="Zoeken..." aria-label="Zoeken..." aria-describedby="basic-addon2">
 </div>
-
   <table id = "dataTable" class="table">
-
   </table>
   `;
   section.innerHTML = html;
