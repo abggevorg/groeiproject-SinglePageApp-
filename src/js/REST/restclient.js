@@ -1,9 +1,9 @@
 const BASE_URL = "http://localhost:3000/";
-const OBJECTS_URL = BASE_URL + "objects";
+const PUBLISHERS_URL = BASE_URL + "publishers";
 
 export async function postObject(obj) {
   try {
-    let response = await fetch(OBJECTS_URL, {
+    let response = await fetch(PUBLISHERS_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -21,7 +21,7 @@ export async function postObject(obj) {
 
 export async function deleteObject(id) {
   try {
-    let response = fetch(OBJECTS_URL + "/" + id, {
+    let response = fetch(PUBLISHERS_URL + "/" + id, {
       method: "DELETE"
     });
     if (!response.ok) {
@@ -35,7 +35,7 @@ export async function deleteObject(id) {
 
 export async function getObject(id) {
   try {
-    let response = await fetch(OBJECTS_URL + "/" + id);
+    let response = await fetch(PUBLISHERS_URL + "/" + id);
     if (!response.ok) {
       throw Error("Unable to get object from id: " + id);
     }
@@ -45,7 +45,7 @@ export async function getObject(id) {
 
 export async function getObjects() {
   try {
-    let response = await fetch(OBJECTS_URL);
+    let response = await fetch(PUBLISHERS_URL);
     if (!response.ok) {
       throw Error(
         "Unable to GET the objects: " +
@@ -58,11 +58,4 @@ export async function getObjects() {
   } catch (error) {
     console.log(error);
   }
-}
-
-export function getImageURL(obj) {
-  if (obj.image === undefined || obj.image == "") {
-    return BASE_URL + "anonymous.jpg";
-  }
-  return BASE_URL + obj.image;
 }

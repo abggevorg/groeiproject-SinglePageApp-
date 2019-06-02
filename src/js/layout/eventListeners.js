@@ -1,7 +1,7 @@
 import * as pageManipulation from "./page.js";
-import * as gs from "./validation.js";
+import * as formValidator from "./validation.js";
 //dit gebeurt maar een keer (in het begin van een )
-export function toNavbar() {
+export function addEventstoNavbar() {
   for (let nav of document.getElementsByClassName("nav-link")) {
     if (nav.innerText.toLowerCase() == "home") {
       nav.classList.add("active");
@@ -23,7 +23,7 @@ export function toSubmitButton() {
   document.getElementById("submit").addEventListener("click", function(event) {
     event.preventDefault();
     try {
-      let fields = gs.validForm();
+      let fields = formValidator.validateForm();
       //doepost requist moet in een andere class zijn
       pageManipulation.doPOSTrequest(fields);
       pageManipulation.setNieuwContent();
