@@ -55,7 +55,9 @@ function setHomeContent() {
                             <h5 class="card-title">User ID:${e.id}</h5>
                             <p class="card-text"> Name: ${e.first_name}</p>
                             <p class="card-text"> Firstname: ${e.last_name}</p>
-                            <p class="card-text">Birthday: ${e.birth_date}</p>
+                            <p class="card-text">Birthday: ${
+                              e.birthday_date
+                            }</p>
                             <p class="card-text"> is alave?: ${e.isAlive}</p>
                             <p class="card-text"> image name: ${e.image}</p>
                             <!-- <p class="card-text">${e.image_name}</p>-->
@@ -103,7 +105,7 @@ export function setNieuwContent() {
   section.innerHTML = html;
 }
 
-export function doPOSTrequest(fields) {
+export async function doPOSTrequest(fields) {
   REST.getObjects().then(function(data) {
     console.log(data);
     let objects = data;
@@ -162,6 +164,8 @@ function setZoekContent() {
   section.innerHTML = html;
   document.getElementById("filter").addEventListener("input", filterTable);
   REST.getObjects().then(function(data) {
+    data.forEach(e => console.log(e));
+
     buildTable(data);
   });
 }
@@ -191,6 +195,7 @@ function buildTable(data) {
       <th scope="col">Firstname</th>
       <th scope="col">Lastname</th>
       <th scope="col">Birthday</th>
+      <th scope="col">Country</th>
     </tr>
   </thead>
   <tbody>`;
@@ -201,8 +206,9 @@ function buildTable(data) {
       <th scope="row">${e.id}</th>
       <td>${e.first_name}</td>
       <td>${e.last_name}</td>
-      <td>${e.birth_date}</td>
-    </tr>
+      <td>${Date(e.birthday_date).toString()}</td>
+      <td>${e.country}</td>
+      </tr>
     `)
   );
   html += ` </tbody>`;

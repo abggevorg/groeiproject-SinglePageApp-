@@ -33,7 +33,7 @@ export function validForm() {
   }
 
   if (errorMessage == "") {
-    return [id, first_name, last_name, birth_date, isAlive, image];
+    return [id, first_name, last_name, birthday_date, image, countryD];
   } else {
     throw Error(errorMessage);
   }
