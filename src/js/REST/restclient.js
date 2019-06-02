@@ -45,8 +45,6 @@ export async function getObject(id) {
 
 export async function getObjects() {
   try {
-    console.log("bener");
-
     let response = await fetch(OBJECTS_URL);
     if (!response.ok) {
       throw Error(

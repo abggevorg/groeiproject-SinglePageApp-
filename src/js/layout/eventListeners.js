@@ -24,7 +24,6 @@ export function toSubmitButton() {
     event.preventDefault();
     try {
       let fields = validation.validForm();
-      console.log("bij de to submidte");
       //doepost requist moet in een andere class zijn
       pageManipulation.doPOSTrequest(fields);
       pageManipulation.setNieuwContent();
