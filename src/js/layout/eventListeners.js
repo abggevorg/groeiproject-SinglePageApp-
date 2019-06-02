@@ -1,5 +1,5 @@
 import * as pageManipulation from "./page.js";
-import * as gs from "./validation.js";
+import * as validation from "./validation.js";
 //dit gebeurt maar een keer (in het begin van een )
 export function toNavbar() {
   for (let nav of document.getElementsByClassName("nav-link")) {
@@ -23,7 +23,8 @@ export function toSubmitButton() {
   document.getElementById("submit").addEventListener("click", function(event) {
     event.preventDefault();
     try {
-      let fields = gs.validForm();
+      let fields = validation.validForm();
+      console.log("bij de to submidte");
       //doepost requist moet in een andere class zijn
       pageManipulation.doPOSTrequest(fields);
       pageManipulation.setNieuwContent();

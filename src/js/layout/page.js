@@ -50,7 +50,9 @@ function setHomeContent() {
       e =>
         (html += ` <div class="col">
                     <div class="card border border-info mx-2 my-3">
-                        <img class="card-img-top ml-3 mt-3" src="${e.image}">
+                        <img class="card-img-top ml-3 mt-3" src="${REST.getImageURL(
+                          e
+                        )}">
                         <div class="card-body mx-2 my-2">
                             <h5 class="card-title">User ID:${e.id}</h5>
                             <p class="card-text"> Name: ${e.first_name}</p>
@@ -58,8 +60,7 @@ function setHomeContent() {
                             <p class="card-text">Birthday: ${
                               e.birthday_date
                             }</p>
-                            <p class="card-text"> is alave?: ${e.isAlive}</p>
-                            <p class="card-text"> image name: ${e.image}</p>
+                            <p class="card-text">Nationality: ${e.country}</p>
                             <!-- <p class="card-text">${e.image_name}</p>-->
                             <p class="card-text"></p>
                         </div>    
@@ -78,17 +79,22 @@ export function setNieuwContent() {
 <form class="container justify-content">
 <h1>Nieuwe object</h1>
   <div class="form-group">
-    <label>Object field 1</label>
+    <label>Firstname</label>
     <input type="text" class="form-control" id="first_name" placeholder="Enter field 1" valid>
   </div>
     <div class="form-group">
-    <label>Object field 2</label>
+    <label>Lastname</label>
     <input type="text" class="form-control" id="last_name" placeholder="Enter field 2" valid>
   </div>
     <div class="form-group">
-    <label>Object field 3</label>
-    <input type="text" class="form-control date" id="birth_date" placeholder="Enter field 3 in DD/MM/YYYY format" valid>
+    <label>Birthday</label>
+    <input type="text" class="form-control date" id="birthday_date" placeholder="Enter field 3 in DD/MM/YYYY format" valid>
   </div>
+  </div>
+  <div class="form-group">
+  <label>Country</label>
+  <input type="text" class="form-control date" id="country" placeholder="Enter field 3 in DD/MM/YYYY format" valid>
+</div>
     <div class="form-group">
     <label for="exampleFormControlFile1">Add Object image here</label>
     <input type="file" class="form-control-file" id="image">
@@ -107,7 +113,7 @@ export function setNieuwContent() {
 
 export async function doPOSTrequest(fields) {
   REST.getObjects().then(function(data) {
-    console.log(data);
+    console.log(fields);
     let objects = data;
     let id = parseInt(Math.max(...objects.map(obj => obj.id))) + 1;
     let first_name = fields[0];
@@ -195,7 +201,7 @@ function buildTable(data) {
       <th scope="col">Firstname</th>
       <th scope="col">Lastname</th>
       <th scope="col">Birthday</th>
-      <th scope="col">Country</th>
+      <th scope="col">Nationality</th>
     </tr>
   </thead>
   <tbody>`;
@@ -206,7 +212,7 @@ function buildTable(data) {
       <th scope="row">${e.id}</th>
       <td>${e.first_name}</td>
       <td>${e.last_name}</td>
-      <td>${Date(e.birthday_date).toString()}</td>
+      <td>${e.birthday_date}</td>
       <td>${e.country}</td>
       </tr>
     `)

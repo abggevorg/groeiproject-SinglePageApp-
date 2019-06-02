@@ -1,13 +1,14 @@
 export function validForm() {
   var moment = require("moment");
   //getting fild values
-  let field1 = document.getElementById("field1").value;
-  let field2 = document.getElementById("field2").value;
-  let date_field3 = moment(
-    document.getElementById("field3").value,
+  let first_name = document.getElementById("first_name").value;
+  let last_name = document.getElementById("last_name").value;
+  let birthday_date = moment(
+    document.getElementById("birthday_date").value,
     "DD/MM/YYYY",
     true
   );
+  let country = document.getElementById("country").value;
   let image = document.getElementById("image").files[0];
   let imageName;
   if (image === undefined || image == "") {
@@ -15,25 +16,25 @@ export function validForm() {
   } else {
     imageName = image.name;
   }
-
+  console.log("jaaaaaa jaaaaaaaaaaa");
   var errorMessage = "";
   //field1 test
-  if (field1 === undefined || field1 == "") {
+  if (first_name === undefined || first_name == "") {
     errorMessage += "field 1 is incorrect please fill field 1 in <br>";
   }
-  if (field2 === undefined || field2 == "") {
+  if (last_name === undefined || last_name == "") {
     errorMessage += "field 2 is incorrect please fill field 2 in <br>";
   }
   if (
-    date_field3 === undefined ||
-    date_field3 == "" ||
-    !date_field3.isValid()
+    birthday_date === undefined ||
+    birthday_date == "" ||
+    !birthday_date.isValid()
   ) {
     errorMessage += "field 3 in incorrect (it should be like 12/12/1012)";
   }
 
   if (errorMessage == "") {
-    return [id, first_name, last_name, birthday_date, image, countryD];
+    return [first_name, last_name, birthday_date, image, country];
   } else {
     throw Error(errorMessage);
   }
