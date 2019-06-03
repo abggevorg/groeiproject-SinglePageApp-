@@ -162,11 +162,11 @@ function setZoekContent() {
   </table>
   `;
   section.innerHTML = html;
+  document.getElementById("filter").addEventListener("input", filterTable);
   REST.getObjects().then(function(data) {
     data.forEach(e => console.log(e));
 
     buildTable(data);
-    document.getElementById("filter").addEventListener("input", filterTable);
   });
 }
 function filterTable() {
@@ -179,7 +179,7 @@ function filterTable() {
         e =>
           e.id == filter ||
           e.first_name.toLowerCase().includes(filter.toLowerCase()) ||
-          e.birthday_date.includes(filter)
+          e.birth_date.includes(filter)
       )
     );
     buildTable(results);
