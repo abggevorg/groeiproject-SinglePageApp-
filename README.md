@@ -4,12 +4,12 @@ Groeiproject UserInterface 2
 
 om project te kunnen runnen
 open niew terminal via visual code
-1 installer nmp in de groiproject
-install npm
-npm run start
+installer nmp in de groiproject
+1: install npm
+2: npm run start
 
 open niew terminal via visual code
 2 installer nmp in de REST api
-cd REST api
-install npm
-npm run start
+1: cd REST api
+2: install npm
+3: npm run start
